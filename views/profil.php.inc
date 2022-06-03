@@ -8,7 +8,7 @@
   </div>
   </header>
 <main>
-<div class="container p-3 mb-2 bg-light text-dark rounded">
+<div class="container p-3 mb-2 bg-light text-dark shadow-lg rounded">
   <div class="text-center">
          <img src="https://lipsum.app/100x100/" class=" shadow rounded-circle"></th>
             <h2 class="mt-3"> Mark Otto</h2>

@@ -12,14 +12,14 @@
 </header>
 <main>
 <div class="container p-3 mb-2 bg-light text-dark shadow-lg rounded">
-<table id="myTable">
+<table class="table" id="myTable">
     <tr>
       <th scope="col">Nom</th>
     </tr>
    <?php for ($i=0; $i < 50; $i++) { ?>
     <tr>
            <td>
-      <a href="?page=profil">
+      <a href="?page=profil" class="text-dark text-decoration-none m-4 h5">
  Mark Otto
    </a>
    </td>
