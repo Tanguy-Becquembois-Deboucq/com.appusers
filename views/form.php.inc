@@ -5,7 +5,7 @@
   <header>
    <div class="d-flex justify-content-around m-15">
     <h1 class="mt-3">Form</h1>
-    <a href="http://localhost/com.appusers/">
+    <a href="/">
       <button class="btn btn-danger btn-block mb-4 mt-3">Go Back</button>
     </a>
   </div>
