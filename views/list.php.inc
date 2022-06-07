@@ -5,9 +5,12 @@
 <header>
    <div class="d-flex justify-content-around m-15">
 <h1 class="mt-3">Liste</h1>
+<div>
 <a href="?page=add">
-<button class="btn btn-success btn-block mb-4 mt-3">Add</button>
+<button class="btn btn-success btn-block mb-4 mt-3">Ajouter</button>
 </a>
+<img src="darkthemeicon/moon.png" class="img-fluid" id="icon">
+</div>
 </div>
 </header>
 <main>

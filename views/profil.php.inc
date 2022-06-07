@@ -2,9 +2,12 @@
   <header>
    <div class="d-flex justify-content-around m-15">
     <h1 class="mt-3">Profil</h1>
+    <div>
     <a href="/">
-      <button class="btn btn-danger btn-block mb-4 mt-3">Go Back</button>
+      <button class="btn btn-danger btn-block mb-4 mt-3">Retour</button>
     </a>
+      <img src="darkthemeicon/moon.png" class="img-fluid" id="icon">
+    </div>
   </div>
   </header>
 <main>
@@ -29,7 +32,7 @@
 
 
                 <div class="col-6"><button class="btn btn-warning btn-block w-100">Edit</button></div>
-                <div class="col-6"><button class="btn btn-danger btn-block w-100">Delete</button></div>
+                <div class="col-6"><button class="btn btn-danger btn-block w-100">Supprimer</button></div>
 
 </div>
 

@@ -1,0 +1,54 @@
+#icon{
+  cursor: pointer;
+}
+
+
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+    background-color: var(--secondary-color);
+}
+
+.dark-theme {
+            --primary-color: #343a40;
+            --secondary-color: #000;
+            --tiert-color: #fff ;
+}
+
+
+
+
+.container {
+  background-color: var(--primary-color) !important;
+}
+
+/*.bg-light {
+  background-color: blue !important;
+}
+*/
+
+main{
+  background-color: var(--secondary-color);
+}
+
+.text-dark {
+  color: var(--tiert-color) !important;
+}
+
+th {
+  color: var(--tiert-color) !important;
+  
+}
+
+header {
+    color: var(--tiert-color) !important;
+    background-color: var(--secondary-color);
+}
+
+footer {
+    color: var(--tiert-color) !important;
+    background-color: var(--secondary-color);
+}
