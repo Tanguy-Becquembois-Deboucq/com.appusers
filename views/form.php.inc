@@ -3,11 +3,11 @@
 
   ?>
   <header>
-   <div class="d-flex justify-content-around m-15">
-    <h1 class="mt-3">Ajouter un nouveau contact</h1>
-    <div>
+   <div class="d-flex justify-content-around m-15 align-items-center">
+    <h1>Ajouter un nouveau contact</h1>
+    <div class="d-flex justify-content-between align-items-center">
     <a href="/">
-      <button class="btn btn-danger btn-block mb-4 mt-3">Retour</button>
+      <button class="btn btn-danger btn-block mb-4 mt-4">Retour</button>
     </a>
       <img src="darkthemeicon/moon.png" class="img-fluid" id="icon">
       </div>

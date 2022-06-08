@@ -3,15 +3,15 @@
 ?>
 
 <header>
-   <div class="d-flex justify-content-around m-15">
-<h1 class="mt-3">Liste</h1>
-<div>
-<a href="?page=add">
-<button class="btn btn-success btn-block mb-4 mt-3">Ajouter</button>
-</a>
-<img src="darkthemeicon/moon.png" class="img-fluid" id="icon">
-</div>
-</div>
+   <div class="d-flex justify-content-around m-15 align-items-center">
+    <h1>Liste</h1>
+    <div class="d-flex justify-content-between align-items-center">
+    <a href="?page=add">
+<button class="btn btn-success btn-block mb-4 mt-4">Ajouter</button>
+    </a>
+      <img src="darkthemeicon/moon.png" class="img-fluid" id="icon">
+      </div>
+  </div>
 </header>
 <main>
 <div class="container p-3 mb-2 bg-light text-dark shadow-lg rounded">
