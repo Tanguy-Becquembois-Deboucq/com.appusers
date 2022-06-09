@@ -4,12 +4,12 @@
   ?>
   <header>
    <div class="d-flex justify-content-around m-15 align-items-center">
-    <h1>Ajouter un nouveau contact</h1>
+    <h1>Nouveau contact</h1>
     <div class="d-flex justify-content-between align-items-center">
     <a href="/">
       <button class="btn btn-danger btn-block mb-4 mt-4">Retour</button>
     </a>
-      <img src="darkthemeicon/moon.png" class="img-fluid" id="icon">
+      <img src="darkthemeicon/moon2.png" class="img-fluid" id="icon">
       </div>
   </div>
   </header>
@@ -76,5 +76,34 @@
       </form>
 
     </div>
+<?php
 
+$Name = htmlspecialchars($_POST['name']);
+
+$Email = htmlspecialchars($_POST['email']);
+
+$Last_name = htmlspecialchars($_POST['Last_name']);
+
+$Job_Function = htmlspecialchars($_POST['Job_Function']);
+
+$Phone = htmlspecialchars($_POST['Phone']);
+
+$Mobile = htmlspecialchars($_POST['Mobile']);
+
+echo htmlspecialchars($_POST['name']);
+
+echo $Name;
+
+$sql = "INSERT INTO users (Name, Last_Name, Email, Job_Function, Phone, Mobile)
+VALUES ('$Name', '$Last_name', '$Email', '$Job_Function', '$Phone', '$Mobile')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+
+?>
   </main>

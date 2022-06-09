@@ -6,7 +6,7 @@
     <a href="/">
       <button class="btn btn-danger btn-block mb-4 mt-4">Retour</button>
     </a>
-      <img src="darkthemeicon/moon.png" class="img-fluid" id="icon">
+      <img src="darkthemeicon/moon2.png" class="img-fluid" id="icon">
       </div>
   </div>
   </div>
@@ -32,7 +32,7 @@
               <div class="row m-2">
 
 
-                <div class="col-6"><button class="btn btn-warning btn-block w-100">Edit</button></div>
+                <div class="col-6"><button class="btn btn-warning btn-block w-100 text-white">Edit</button></div>
                 <div class="col-6"><button class="btn btn-danger btn-block w-100">Supprimer</button></div>
 
 </div>

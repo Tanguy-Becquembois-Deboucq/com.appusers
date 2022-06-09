@@ -9,7 +9,7 @@
     <a href="?page=add">
 <button class="btn btn-success btn-block mb-4 mt-4">Ajouter</button>
     </a>
-      <img src="darkthemeicon/moon.png" class="img-fluid" id="icon">
+      <img src="darkthemeicon/moon2.png" class="img-fluid" id="icon">
       </div>
   </div>
 </header>
