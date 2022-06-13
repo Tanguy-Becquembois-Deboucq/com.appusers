@@ -15,20 +15,20 @@
   </header>
   <main>
     <div class="container p-3 mb-2 bg-light text-dark shadow-lg rounded">
-      <form method="post">
+      <form method="post" action="?page=add&form=insert">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
           <div class="col">
             <div class="form-outline">
               <label class="form-label" for="name">Prenom</label>
-              <input type="text" name="name" class="form-control" placeholder="Prenom"/>
+              <input type="text" name="name" class="form-control" placeholder="Prenom" required/>
 
             </div>
           </div>
           <div class="col">
             <div class="form-outline">
               <label class="form-label" for="Last_name">Nom</label>
-              <input type="text" name="Last_name" class="form-control" placeholder="Nom"/>
+              <input type="text" name="Last_name" class="form-control" placeholder="Nom" required/>
 
             </div>
           </div>
@@ -44,21 +44,21 @@
         <!-- Text input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="Mobile">Mobile</label>
-          <input type="text" name="Mobile" class="form-control" placeholder="Mobile"/>
+          <input type="text" name="Mobile" class="form-control" placeholder="Mobile" required/>
 
         </div>
 
                 <!-- Number input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="Phone">Telephone</label>
-          <input type="text" name="Phone" class="form-control" placeholder="Telephone"/>
+          <input type="text" name="Phone" class="form-control" placeholder="Telephone" required/>
 
         </div>
 
         <!-- Email input -->
         <div class="form-outline mb-4">
           <label class="form-label" name="email">Email</label>
-          <input type="email" name="email" class="form-control" placeholder="Email" />
+          <input type="email" name="email" class="form-control" placeholder="Email" required/>
 
         </div>
 
@@ -78,6 +78,9 @@
     </div>
 <?php
 
+$action = @$_GET['form'];
+
+if ($action == "insert") {
 $Name = htmlspecialchars($_POST['name']);
 
 $Email = htmlspecialchars($_POST['email']);
@@ -90,18 +93,25 @@ $Phone = htmlspecialchars($_POST['Phone']);
 
 $Mobile = htmlspecialchars($_POST['Mobile']);
 
+$Picture = htmlspecialchars($_POST['Picture']);
+
 echo htmlspecialchars($_POST['name']);
 
 echo $Name;
 
-$sql = "INSERT INTO users (Name, Last_Name, Email, Job_Function, Phone, Mobile)
-VALUES ('$Name', '$Last_name', '$Email', '$Job_Function', '$Phone', '$Mobile')";
+$sql = "INSERT INTO users (Name, Last_Name, Email, Job_Function, Phone, Mobile, Picture)
+VALUES ('$Name', '$Last_name', '$Email', '$Job_Function', '$Phone', '$Mobile', '$Picture')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+}
+
+
+
 
 $conn->close();
 

@@ -19,16 +19,34 @@
     <tr>
       <th scope="col">Nom</th>
     </tr>
-   <?php for ($i=0; $i < 50; $i++) { ?>
+            <?php
+   $sql = "SELECT id, Name, Last_Name FROM users";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+   ?>
     <tr>
+
            <td>
-      <a href="?page=profil" class="text-dark text-decoration-none m-4 h5">
- Mark Otto
-   </a>
+   <a href="?page=profil" class="text-dark text-decoration-none m-4 h5">
+
+    <?php echo $row["Name"]. " " . $row["Last_Name"]; ?>
+
+  </a>
    </td>
 
+
     </tr>
- <?php } ?>
+   <?php
+     }
+} else {
+  echo "0 results";
+}
+
+$conn->close();
+?>
 
 </table>
 </div>
