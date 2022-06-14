@@ -44,14 +44,14 @@
         <!-- Text input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="Mobile">Mobile</label>
-          <input type="text" name="Mobile" class="form-control" placeholder="Mobile" required/>
+          <input type="tel" name="Mobile" class="form-control" placeholder="Mobile" pattern="[0-9]{10}" required/>
 
         </div>
 
                 <!-- Number input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="Phone">Telephone</label>
-          <input type="text" name="Phone" class="form-control" placeholder="Telephone" required/>
+          <input type="tel" name="Phone" class="form-control" placeholder="Telephone" pattern="[0-9]{10}" required/>
 
         </div>
 
@@ -81,13 +81,54 @@
 $action = @$_GET['form'];
 
 if ($action == "insert") {
-$Name = htmlspecialchars($_POST['name']);
+$testName = @$_POST['name'];
+if(strlen($testName) < 100){
+$Name = filter_var($testName, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+echo $Name;
 
-$Email = htmlspecialchars($_POST['email']);
+} else {
+  echo "<h3>le prenom est trop long</br></h3>";
+}
 
-$Last_name = htmlspecialchars($_POST['Last_name']);
+$testEmail = @$_POST['email'];
+if(strlen($testEmail) < 250){
+$Email = filter_var($testEmail, FILTER_VALIDATE_EMAIL);
+echo $Email;
 
-$Job_Function = htmlspecialchars($_POST['Job_Function']);
+} else {
+  echo "<h3>l'email est trop long</br></h3>";
+}
+/*
+
+if((strlen($testEmail) < 250){
+    echo "Email invalide truc";
+    echo '<br>';
+  }else {
+    $Email = htmlspecialchars($_POST['email']);
+}
+*/
+
+$testLast_Name = @$_POST['Last_name'];
+
+if(strlen($testLast_Name) < 100){
+$Last_Name = filter_var($testLast_Name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+echo $Last_Name;
+} else {
+  echo "<h3>le nom est trop long</br></h3>";
+}
+/*$Last_Name = htmlspecialchars($_POST['Last_name']);*/
+
+
+$testJob_Function = @$_POST['Job_Function'];
+
+
+if(strlen($testJob_Function) < 55){
+$Job_Function = filter_var($testJob_Function, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+echo $Job_Function;
+} else {
+  echo "<h3>le Job est trop long</br></h3>";
+}
+/*$Job_Function = htmlspecialchars($_POST['Job_Function']);*/
 
 $Phone = htmlspecialchars($_POST['Phone']);
 
@@ -100,7 +141,7 @@ echo htmlspecialchars($_POST['name']);
 echo $Name;
 
 $sql = "INSERT INTO users (Name, Last_Name, Email, Job_Function, Phone, Mobile, Picture)
-VALUES ('$Name', '$Last_name', '$Email', '$Job_Function', '$Phone', '$Mobile', '$Picture')";
+VALUES ('$Name', '$Last_Name', '$Email', '$Job_Function', '$Phone', '$Mobile', '$Picture')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
