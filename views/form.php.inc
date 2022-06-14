@@ -81,6 +81,10 @@
 $action = @$_GET['form'];
 
 if ($action == "insert") {
+
+
+$test = true;
+
 $testName = @$_POST['name'];
 if(strlen($testName) < 100){
 $Name = filter_var($testName, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
@@ -88,6 +92,7 @@ echo $Name;
 
 } else {
   echo "<h3>le prenom est trop long</br></h3>";
+  $test = false;
 }
 
 $testEmail = @$_POST['email'];
@@ -97,6 +102,7 @@ echo $Email;
 
 } else {
   echo "<h3>l'email est trop long</br></h3>";
+    $test = false;
 }
 /*
 
@@ -115,6 +121,7 @@ $Last_Name = filter_var($testLast_Name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRI
 echo $Last_Name;
 } else {
   echo "<h3>le nom est trop long</br></h3>";
+    $test = false;
 }
 /*$Last_Name = htmlspecialchars($_POST['Last_name']);*/
 
@@ -127,6 +134,7 @@ $Job_Function = filter_var($testJob_Function, FILTER_SANITIZE_STRING, FILTER_FLA
 echo $Job_Function;
 } else {
   echo "<h3>le Job est trop long</br></h3>";
+    $test = false;
 }
 /*$Job_Function = htmlspecialchars($_POST['Job_Function']);*/
 
@@ -140,6 +148,8 @@ echo htmlspecialchars($_POST['name']);
 
 echo $Name;
 
+if ($test == true) {
+
 $sql = "INSERT INTO users (Name, Last_Name, Email, Job_Function, Phone, Mobile, Picture)
 VALUES ('$Name', '$Last_Name', '$Email', '$Job_Function', '$Phone', '$Mobile', '$Picture')";
 
@@ -147,6 +157,7 @@ if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
+}
 }
 
 }
