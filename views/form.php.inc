@@ -15,7 +15,7 @@
   </header>
   <main>
     <div class="container p-3 mb-2 bg-light text-dark shadow-lg rounded">
-      <form method="post" action="?page=add&form=insert">
+      <form method="post" action="?page=add&form=insert"  enctype="multipart/form-data">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
           <div class="col">
@@ -66,13 +66,14 @@
 
 
           <div class="mb-3">
-            <label for="Picture" class="form-label">Photo</label>
-            <input class="form-control" type="file" name="photo" id="fileSelect">
+            <label for="fileSelect" class="form-label">Photo</label>
+            <input class="form-control" type="file" name="choosefile" id="fileSelect">
         </div>
 
 
+
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4" value="Upload">Enregistrer</button>
+        <button type="submit" class="btn btn-primary btn-block mb-4" value="Upload" name="uploadfile">Enregistrer</button>
       </form>
 
     </div>
@@ -139,58 +140,51 @@ $Job_Function = filter_var($testJob_Function, FILTER_SANITIZE_STRING, FILTER_FLA
 
 
 
-    // Check if file was uploaded without errors
-    if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0)
-    {
-        $allowed_ext = array("jpg" => "image/jpg",
-                            "jpeg" => "image/jpeg",
-                            "gif" => "image/gif",
-                            "png" => "image/png");
-        $file_name = $_FILES["photo"]["name"];
-        $file_type = $_FILES["photo"]["type"];
-        $file_size = $_FILES["photo"]["size"];
-    
-        // Verify file extension
-        $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+$msg = ""; 
 
-        if (!array_key_exists($ext, $allowed_ext))  
-            die("Error: Please select a valid file format.");
-        
-        // Verify file size - 2MB max
-        $maxsize = 2 * 1024 * 1024;
+// check if the user has clicked the button "UPLOAD" 
 
-        if ($file_size > $maxsize)  
-            die("Error: File size is larger than the allowed limit of 2MB");    
-    
-        // Verify MYME type of the file
-        if (in_array($file_type, $allowed_ext))
-        {
-            // Check whether file exists before uploading it
-            if (file_exists("upload/".$_FILES["photo"]["name"]))        
-                echo $_FILES["photo"]["name"]." already exists!";
-            
-            else
-            {
-                move_uploaded_file($_FILES["photo"]["tmp_name"],
-                        "uploads/".$_FILES["photo"]["name"]);
-                echo "Your file uploaded successfully.";
-            }
-        }
-        else
-        {
-            echo "Error: Please try again!";
-        }
+if (isset($_POST['uploadfile'])) {
+
+    $filename = $_FILES["choosefile"]["name"];
+
+    $tempname = $_FILES["choosefile"]["tmp_name"];  
+
+        $folder = "uploads/".$filename;   
+
+    // connect with the database
+
+  /*  $db = mysqli_connect("localhost", "root", "", "users"); 
+
+        // query to insert the submitted data
+
+        $sql = "INSERT INTO Picture (filename) VALUES ('$filename')";
+
+        // function to execute above query
+
+        mysqli_query($db, $sql);       
+*/
+        // Add the image to the "image" folder"
+
+        if (move_uploaded_file($tempname, $folder)) {
+
+            $msg = "Image uploaded successfully";
+
+        }else{
+
+            $msg = "Failed to upload image";
+
     }
-    else
-    {
-        echo "Error: ". $_FILES["photo"]["error"];
-    }
+
+}
+
+/*$result = mysqli_query($db, "SELECT * FROM Picture");*/
 
 $Phone = htmlspecialchars($_POST['Phone']);
 
 $Mobile = htmlspecialchars($_POST['Mobile']);
 
-$Picture = htmlspecialchars($_POST['photo']);
+$Picture = htmlspecialchars($filename);
 
 
 
