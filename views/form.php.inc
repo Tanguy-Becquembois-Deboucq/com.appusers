@@ -139,6 +139,36 @@ $Job_Function = filter_var($testJob_Function, FILTER_SANITIZE_STRING, FILTER_FLA
 /*$Job_Function = htmlspecialchars($_POST['Job_Function']);*/
 
 
+function exeSlugify($var='n-a') {
+
+ 
+
+  $var = preg_replace('~[^\pL\d]+~u', '-', $var);
+
+  $var = iconv('utf-8', 'us-ascii//TRANSLIT', $var);
+
+  $var = preg_replace('~[^-\w]+~', '', $var);
+
+  $var = trim($var, '-');
+
+  $var = preg_replace('~-+~', '-', $var);
+
+  $var = strtolower($var);
+
+ 
+
+  //$var = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $var), '-'));
+
+  if (empty($var)) {
+
+    return 'n-a';
+
+  }
+
+  return $var;
+
+}
+
 
 $msg = ""; 
 
@@ -167,6 +197,12 @@ if (isset($_POST['uploadfile'])) {
         // Add the image to the "image" folder"
 
         if (move_uploaded_file($tempname, $folder)) {
+
+          $ext = explode(".", $filename);
+          echo $ext[0];
+          $newname = exeSlugify($ext[0]);
+          $imageFileType = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
+          rename("uploads/".$filename, "uploads/".$newname . "." . $imageFileType);
 
             $msg = "Image uploaded successfully";
 
