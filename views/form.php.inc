@@ -199,16 +199,18 @@ if (isset($_POST['uploadfile'])) {
         if (move_uploaded_file($tempname, $folder)) {
 
           $ext = explode(".", $filename);
-          echo $ext[0];
           $newname = exeSlugify($ext[0]);
           $imageFileType = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
           rename("uploads/".$filename, "uploads/".$newname . "." . $imageFileType);
 
             $msg = "Image uploaded successfully";
+            $Picture = htmlspecialchars($newname . "." . $imageFileType);
 
         }else{
 
-            $msg = "Failed to upload image";
+            $msg = "<h3>Failed to upload image</h3>";
+            echo $msg;
+                $test = false;
 
     }
 
@@ -220,7 +222,7 @@ $Phone = htmlspecialchars($_POST['Phone']);
 
 $Mobile = htmlspecialchars($_POST['Mobile']);
 
-$Picture = htmlspecialchars($filename);
+
 
 
 

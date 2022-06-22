@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
     <tr>
 
            <td>
-   <a href="?page=profil" class="text-dark text-decoration-none m-4 h5">
+   <a href="?page=profil&user=<?php echo $row["id"]?>" class="text-dark text-decoration-none m-4 h5">
 
     <?php echo $row["Name"]. " " . $row["Last_Name"]; ?>
 
