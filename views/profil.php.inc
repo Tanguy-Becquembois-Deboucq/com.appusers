@@ -1,13 +1,4 @@
-  <?php
-  if(array_key_exists('button1', $_POST)) {
-            button1();
-        }
-               function button1() {
-
-$sql = "DELETE FROM users WHERE id = $profilid";
-                $conn->query($sql);
-        }
-         ?>
+  <?php  ?>
   <header>
    <div class="d-flex justify-content-around m-15 align-items-center">
     <h1>Profil</h1>
@@ -64,8 +55,8 @@ $data = $result->fetch_assoc();
               <div class="row m-2">
 
 
-                <div class="col-6"><a href="?page=edit&id=<?php echo $profilid ?>"><button class="btn btn-warning btn-block w-100 text-white" type="button">Edit</button></a></div>
-                <div class="col-6"><a href="/"><button class="btn btn-danger btn-block w-100" type="submit" name="button1" value="Button1">Supprimer</button></a></div>
+                <div class="col-6"><a href="?page=edit&id=<?php echo $profilid ?>"><button class="btn btn-warning btn-block w-100 text-white" type="button">Edit</button></a></div>    
+                <div class="col-6"><a href="?page=delete&user=<?php echo $profilid?>"><button class="btn btn-danger btn-block w-100" type="button">Supprimer</button></a></div>
 
 </div>
 

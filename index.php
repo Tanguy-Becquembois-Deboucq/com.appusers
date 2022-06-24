@@ -20,6 +20,7 @@ if ($page == '') { require('views/list.php.inc'); }
 if ($page == 'add') { require('views/form.php.inc'); }
 if ($page == 'profil') { require('views/profil.php.inc'); }
 if ($page == 'edit') { require('views/edit.php.inc'); }
+if ($page == 'delete') { require('views/delete.php.inc'); }
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </script>
