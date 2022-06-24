@@ -1,10 +1,10 @@
   <?php
-
+    $editid = $_GET['id'];
 
   ?>
   <header>
    <div class="d-flex justify-content-around m-15 align-items-center">
-    <h1>Nouveau Contact</h1>
+    <h1>Edit</h1>
     <div class="d-flex justify-content-between align-items-center">
       <a href="/">
         <button class="btn btn-danger btn-block mb-4 mt-4">Retour</button>
@@ -15,7 +15,7 @@
 </header>
 <main>
   <div class="container p-3 mb-2 bg-light text-dark shadow-lg rounded">
-    <form method="post" action="?page=add&form=insert"  enctype="multipart/form-data">
+    <form method="post" action="?page=edit&id=<?php echo $editid; ?>&form=insert"  enctype="multipart/form-data">
       <!-- 2 column grid layout with text inputs for the first and last names -->
       <div class="row mb-4">
         <div class="col">
@@ -206,8 +206,8 @@ if (isset($_POST['uploadfile'])) {
 
       if ($test == true) {
 
-        $sql = "INSERT INTO users (Name, Last_Name, Email, Job_Function, Phone, Mobile, Picture)
-        VALUES ('$Name', '$Last_Name', '$Email', '$Job_Function', '$Phone', '$Mobile', '$Picture')";
+        $sql = "
+        UPDATE users SET Name = '$Name', Last_Name = '$Last_Name', Email = '$Email', Job_Function = '$Job_Function', Phone = '$Phone', Mobile = '$Mobile', Picture = '$Picture' WHERE ID = $editid";
 
         if ($conn->query($sql) === TRUE) {
           echo "New record created successfully";
