@@ -38,7 +38,7 @@ $sql = "DELETE FROM users WHERE id = $profilid";
 
 
         if ($conn->query($sql) === TRUE) {
-          echo "<h3>Suppression Effectuer</h3>";
+            header('Location:/');
         } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
         }
